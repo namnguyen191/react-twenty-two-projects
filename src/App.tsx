@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './AppStyles.scss';
+import InfinityScroll from './pages/Projects/InfinityScroll/InfinityScroll';
 import { AppleNavbar } from './shared/components';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
@@ -24,6 +25,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/project/quote-generator">
             <QuoteGenerator />
+          </Route>
+          <Route path="/project/infinity-scroll">
+            <InfinityScroll />
           </Route>
         </React.Suspense>
       </Switch>

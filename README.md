@@ -2,3 +2,4 @@
 
 ## Project 1: Quote generator
 
+## Project 2: Infinity Scrolling
