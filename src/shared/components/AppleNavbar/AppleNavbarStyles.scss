@@ -1,0 +1,26 @@
+.apple-nav {
+  background-color: hsla(0, 0%, 0%, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  color: hsl(240, 11%, 80%);
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.4rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  .nav-items {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+
+    & > * {
+      transition: color 0.3s ease;
+      &:hover {
+        color: hsl(240, 11%, 90%);
+      }
+    }
+  }
+}

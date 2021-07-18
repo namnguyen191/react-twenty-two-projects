@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import './AppStyles.scss';
+import { AppleNavbar } from './shared/components';
 
-function App() {
+const Home = React.lazy(() => import('./pages/Home/Home'));
+const QuoteGenerator = React.lazy(
+  () => import('./pages/Projects/QuoteGenerator/QuoteGenerator')
+);
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppleNavbar>
+        <Link to="/">Home</Link>
+        <Link to="/">
+          <i style={{ fontSize: '2.7rem' }} className="fab fa-github"></i>
+        </Link>
+      </AppleNavbar>
+      <Switch>
+        <React.Suspense fallback={<p>Loading</p>}>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/project/quote-generator">
+            <QuoteGenerator />
+          </Route>
+        </React.Suspense>
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
