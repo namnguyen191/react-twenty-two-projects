@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './AppStyles.scss';
 import InfinityScroll from './pages/Projects/InfinityScroll/InfinityScroll';
+import PictureInPicture from './pages/Projects/PictureInPicture/PictureInPicture';
 import { AppleNavbar } from './shared/components';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
@@ -28,6 +29,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/project/infinity-scroll">
             <InfinityScroll />
+          </Route>
+          <Route path="/project/picture-in-picture">
+            <PictureInPicture />
           </Route>
         </React.Suspense>
       </Switch>

@@ -8,6 +8,8 @@ type Photo = {
   links: { html: string };
 };
 
+const TITLE = process.env.REACT_APP_APP_NAME + ' - Infinity Scroll';
+
 const InfinityScroll: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   let loading = false;
@@ -42,6 +44,8 @@ const InfinityScroll: React.FC = () => {
   };
 
   useEffect(() => {
+    document.title = TITLE;
+
     getPhotos();
 
     activateInfiniteScroll();

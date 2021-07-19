@@ -2,4 +2,6 @@
 
 ## Project 1: Quote generator
 
-## Project 2: Infinity Scrolling
+## Project 2: Infinity scrolling
+
+## Project 3: Picture in picture

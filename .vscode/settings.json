@@ -7,5 +7,8 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cssVariables.lookupFiles": [
+    "src/globalStyles.scss",
+  ]
 }

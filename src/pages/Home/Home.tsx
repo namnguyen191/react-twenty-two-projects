@@ -26,6 +26,13 @@ const Home: React.FC = () => {
           imageUrl="/images/infinity-scroll-card-bg.jpeg"
         />
       </Link>
+      <Link to="/project/picture-in-picture">
+        <ParallaxCard
+          title="Picture in Picture"
+          text="It's Picturception"
+          imageUrl="/images/picture-in-picture-card-bg.jpeg"
+        />
+      </Link>
     </div>
   );
 };
