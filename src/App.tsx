@@ -12,7 +12,7 @@ const QuoteGenerator = React.lazy(
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={process.env.REACT_APP_BASE_URL}>
       <AppleNavbar>
         <Link to="/">Home</Link>
         <Link to="/">
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       </AppleNavbar>
       <Switch>
         <React.Suspense fallback={<p>Loading</p>}>
-          <Route exact path="/">
+          <Route exact path={'/'}>
             <Home />
           </Route>
           <Route path="/project/quote-generator">

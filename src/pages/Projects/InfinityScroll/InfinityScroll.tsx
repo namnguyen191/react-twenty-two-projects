@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import './InfinityScrollStyles.scss';
 
 type Photo = {
@@ -12,7 +12,8 @@ const TITLE = process.env.REACT_APP_APP_NAME + ' - Infinity Scroll';
 
 const InfinityScroll: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  let loading = false;
+  const loading = useRef<boolean>(false);
+  const imageQueue = useRef<number>(0);
 
   const unsplashAPIUrl = 'https://api.unsplash.com';
   const photoCount = 10;
@@ -21,19 +22,21 @@ const InfinityScroll: React.FC = () => {
   const getPhotos = async () => {
     console.log('Trigger getting photos');
 
-    loading = true;
+    loading.current = true;
     const res = await axios.get<Photo[]>(
       `${unsplashAPIUrl}/photos/random?client_id=${apiKey}&count=${photoCount}`
     );
-    loading = false;
+
+    loading.current = false;
+    imageQueue.current += res.data.length;
     setPhotos((curPhotos) => [...curPhotos, ...res.data]);
   };
 
   const loadMoreImage = () => {
     if (
       window.scrollY > document.body.offsetHeight - 1000 &&
-      !loading &&
-      document.readyState === 'complete'
+      !loading.current &&
+      imageQueue.current === 0
     ) {
       getPhotos();
     }
@@ -66,6 +69,10 @@ const InfinityScroll: React.FC = () => {
             src={photos[i].urls.regular}
             alt={photos[i].alt_description}
             title={photos[i].alt_description}
+            // eslint-disable-next-line no-loop-func
+            onLoad={() => {
+              imageQueue.current -= 1;
+            }}
           />
         </a>
       );
@@ -77,9 +84,11 @@ const InfinityScroll: React.FC = () => {
   return (
     <div className="infinity-scroll-container">
       <h1>Unsplash API - Infinite Scroll</h1>
-      {/* <img src="/images/loading-infinity.svg" alt="Loader" /> */}
       <div className="img-container">{renderImages()}</div>
-      <img src="/images/loading-infinity.svg" alt="Loader Icon" />
+      <img
+        src={process.env.REACT_APP_BASE_URL + '/images/loading-infinity.svg'}
+        alt="Loader Icon"
+      />
     </div>
   );
 };

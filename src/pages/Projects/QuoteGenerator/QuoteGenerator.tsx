@@ -47,7 +47,10 @@ const QuoteGenerator: React.FC = () => {
       {data.loading ? (
         <div className="loading-container">
           <img
-            src="/images/loading-simple-spinner-blue.svg"
+            src={
+              process.env.REACT_APP_BASE_URL +
+              '/images/loading-simple-spinner-blue.svg'
+            }
             alt="Loading"
             className="loading"
           />
