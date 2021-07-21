@@ -42,6 +42,15 @@ const Home: React.FC = () => {
           }
         />
       </Link>
+      <Link to="/project/joke-teller">
+        <ParallaxCard
+          title="Joke Teller"
+          text="The app itself is a joke"
+          imageUrl={
+            process.env.REACT_APP_BASE_URL + '/images/joke-teller-card-bg.jpeg'
+          }
+        />
+      </Link>
     </div>
   );
 };

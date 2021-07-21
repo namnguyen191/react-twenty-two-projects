@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './AppStyles.scss';
 import InfinityScroll from './pages/Projects/InfinityScroll/InfinityScroll';
+import JokeTeller from './pages/Projects/JokeTeller/JokeTeller';
 import PictureInPicture from './pages/Projects/PictureInPicture/PictureInPicture';
 import { AppleNavbar } from './shared/components';
 
@@ -21,17 +22,20 @@ const App: React.FC = () => {
       </AppleNavbar>
       <Switch>
         <React.Suspense fallback={<p>Loading</p>}>
-          <Route exact path={'/'}>
-            <Home />
-          </Route>
-          <Route path="/project/quote-generator">
+          <Route exact path="/project/quote-generator">
             <QuoteGenerator />
           </Route>
-          <Route path="/project/infinity-scroll">
+          <Route exact path="/project/infinity-scroll">
             <InfinityScroll />
           </Route>
-          <Route path="/project/picture-in-picture">
+          <Route exact path="/project/picture-in-picture">
             <PictureInPicture />
+          </Route>
+          <Route exact path="/project/joke-teller">
+            <JokeTeller />
+          </Route>
+          <Route exact path={'/'}>
+            <Home />
           </Route>
         </React.Suspense>
       </Switch>
