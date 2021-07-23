@@ -1,14 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './AppStyles.scss';
-import InfinityScroll from './pages/Projects/InfinityScroll/InfinityScroll';
-import JokeTeller from './pages/Projects/JokeTeller/JokeTeller';
-import PictureInPicture from './pages/Projects/PictureInPicture/PictureInPicture';
 import { AppleNavbar } from './shared/components';
 
+const InfinityScroll = React.lazy(
+  () => import('./pages/Projects/InfinityScroll/InfinityScroll')
+);
 const Home = React.lazy(() => import('./pages/Home/Home'));
+const JokeTeller = React.lazy(
+  () => import('./pages/Projects/JokeTeller/JokeTeller')
+);
 const QuoteGenerator = React.lazy(
   () => import('./pages/Projects/QuoteGenerator/QuoteGenerator')
+);
+const PictureInPicture = React.lazy(
+  () => import('./pages/Projects/PictureInPicture/PictureInPicture')
+);
+const LightAndDarkMode = React.lazy(
+  () => import('./pages/Projects/LightAndDarkMode/LightAndDarkMode')
 );
 
 const App: React.FC = () => {
@@ -20,25 +29,26 @@ const App: React.FC = () => {
           <i style={{ fontSize: '2.7rem' }} className="fab fa-github"></i>
         </Link>
       </AppleNavbar>
-      <Switch>
-        <React.Suspense fallback={<p>Loading</p>}>
-          <Route exact path="/project/quote-generator">
-            <QuoteGenerator />
-          </Route>
-          <Route exact path="/project/infinity-scroll">
-            <InfinityScroll />
-          </Route>
-          <Route exact path="/project/picture-in-picture">
-            <PictureInPicture />
-          </Route>
-          <Route exact path="/project/joke-teller">
-            <JokeTeller />
-          </Route>
-          <Route exact path={'/'}>
-            <Home />
-          </Route>
-        </React.Suspense>
-      </Switch>
+      <React.Suspense fallback={<p>Loading</p>}>
+        <Route exact path="/project/quote-generator">
+          <QuoteGenerator />
+        </Route>
+        <Route exact path="/project/infinity-scroll">
+          <InfinityScroll />
+        </Route>
+        <Route exact path="/project/picture-in-picture">
+          <PictureInPicture />
+        </Route>
+        <Route exact path="/project/joke-teller">
+          <JokeTeller />
+        </Route>
+        <Route exact path="/project/light-and-dark">
+          <LightAndDarkMode />
+        </Route>
+        <Route exact path={'/'}>
+          <Home />
+        </Route>
+      </React.Suspense>
     </Router>
   );
 };

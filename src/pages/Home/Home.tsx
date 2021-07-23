@@ -51,6 +51,16 @@ const Home: React.FC = () => {
           }
         />
       </Link>
+      <Link to="/project/light-and-dark">
+        <ParallaxCard
+          title="Light & Dark"
+          text="I don't talk to people who use light mode"
+          imageUrl={
+            process.env.REACT_APP_BASE_URL +
+            '/images/light-and-dark-card-bg.png'
+          }
+        />
+      </Link>
     </div>
   );
 };

@@ -7,3 +7,5 @@
 ## Project 3: Picture in picture
 
 ## Project 4: Random jokes teller
+
+## Project 5: Light and Dark mode
