@@ -19,6 +19,9 @@ const PictureInPicture = React.lazy(
 const LightAndDarkMode = React.lazy(
   () => import('./pages/Projects/LightAndDarkMode/LightAndDarkMode')
 );
+const ProfilePageTemplate = React.lazy(
+  () => import('./pages/Projects/ProfilePageTemplate/ProfilePageTemplate')
+);
 
 const App: React.FC = () => {
   return (
@@ -44,6 +47,9 @@ const App: React.FC = () => {
         </Route>
         <Route exact path="/project/light-and-dark">
           <LightAndDarkMode />
+        </Route>
+        <Route exact path="/project/profile-page-template">
+          <ProfilePageTemplate />
         </Route>
         <Route exact path={'/'}>
           <Home />

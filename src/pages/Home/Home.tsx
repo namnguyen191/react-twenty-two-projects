@@ -61,6 +61,16 @@ const Home: React.FC = () => {
           }
         />
       </Link>
+      <Link to="/project/profile-page-template">
+        <ParallaxCard
+          title="Profile Page"
+          text="Probably not gonna land you a IT job but at least you tried"
+          imageUrl={
+            process.env.REACT_APP_BASE_URL +
+            '/images/profile-page-template-card-bg.webp'
+          }
+        />
+      </Link>
     </div>
   );
 };

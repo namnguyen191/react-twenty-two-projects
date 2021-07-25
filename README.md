@@ -9,3 +9,5 @@
 ## Project 4: Random jokes teller
 
 ## Project 5: Light and Dark mode
+
+## Easy Profile Page template using Creative Tim's Tailwind starter kit
